@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#080808"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="RadarMX"/>
+  <title>RadarMX</title>
+  <script>
+    // Inline manifest
+    const iconB64 = "data:image/png;base64,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";
+    const manifest = {
+      name: "RadarMX", short_name: "RadarMX",
+      description: "Inteligencia de Mercado · México",
+      start_url: "./radarmx.html", display: "standalone",
+      background_color: "#080808", theme_color: "#080808",
+      icons: [{ src: iconB64, sizes: "192x192", type: "image/png", purpose: "any maskable" }]
+    };
+    const blob = new Blob([JSON.stringify(manifest)], {type:'application/manifest+json'});
+    const link = document.createElement('link');
+    link.rel = 'manifest'; link.href = URL.createObjectURL(blob);
+    document.addEventListener('DOMContentLoaded', () => {
+      document.head.appendChild(link);
+      // Apple touch icon
+      const appleIcon = document.createElement('link');
+      appleIcon.rel = 'apple-touch-icon'; appleIcon.href = iconB64;
+      document.head.appendChild(appleIcon);
+    });
+    // Inline service worker
+    const swCode = `
+      const CACHE='radarmx-v1';
+      self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./radarmx.html'])))});
+      self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});
+    `;
+    const swBlob = new Blob([swCode], {type:'application/javascript'});
+    const swUrl = URL.createObjectURL(swBlob);
+    if('serviceWorker' in navigator) navigator.serviceWorker.register(swUrl);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#080808}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const{useState}=React;
+const data={
+  fecha:"27 Mar 2026",semana:"Semana 13 / 2026",
+  oportunidades:[
+    {id:1,nivel:"ALTA",sector:"Logística última milla",codigo:"SCIAN 492110",region:"Bajío — León, Querétaro, SLP",demanda:87,oferta:23,tendencia:"+312%",dias:52,ventana:"6–18 meses",riesgo:"Bajo",driver:"Nearshoring industrial acelera demanda de entrega local no cubierta por operadores actuales.",inversion:"Media ($80k–$300k MXN)",señales:["Google Trends ↑312%","DENUE: baja densidad","MeLi logística ↑89%"]},
+    {id:2,nivel:"ALTA",sector:"Salud preventiva / wellness",codigo:"SCIAN 621410",region:"CDMX — Alcaldías norte",demanda:79,oferta:31,tendencia:"+198%",dias:38,ventana:"4–12 meses",riesgo:"Bajo",driver:"Post-pandemia generó cambio estructural en hábitos. Norte CDMX subatendido vs sur.",inversion:"Baja ($30k–$100k MXN)",señales:["Búsquedas ↑198%","0 clínicas nuevas en DENUE zona norte","Ticket promedio alto"]},
+    {id:3,nivel:"MEDIA",sector:"Educación técnica digital",codigo:"SCIAN 611519",region:"Monterrey + Guadalajara",demanda:68,oferta:44,tendencia:"+134%",dias:71,ventana:"3–9 meses",riesgo:"Medio",driver:"Demanda de talento tech supera oferta de escuelas. Empresas pagan por capacitación rápida.",inversion:"Baja ($20k–$80k MXN)",señales:["LinkedIn vacantes tech ↑67%","Bootcamps saturados","STPS subsidios disponibles"]},
+    {id:4,nivel:"MEDIA",sector:"Alimentos funcionales / saludables",codigo:"SCIAN 311990",region:"Nacional — foco e-commerce",demanda:61,oferta:49,tendencia:"+89%",dias:90,ventana:"6–24 meses",riesgo:"Medio",driver:"Categoría en consolidación. Primeras marcas locales capturando mercado antes de grandes.",inversion:"Media ($100k–$500k MXN)",señales:["MeLi categoría ↑89%","Instagram engagement alto","Importaciones bajan"]},
+    {id:5,nivel:"VIGILAR",sector:"Retail tradicional — papelería",codigo:"SCIAN 453210",region:"Nacional",demanda:28,oferta:71,tendencia:"–34%",dias:120,ventana:"En contracción",riesgo:"Alto",driver:"Digitalización y Amazon erosionan demanda. Segmento en declive estructural sostenido.",inversion:"Evitar apertura",señales:["Búsquedas ↓34%","Cierres DENUE ↑","Amazon MX ↑papelería online"]},
+  ]
+};
+const cfg={
+  ALTA:{bg:"rgba(0,255,135,0.08)",border:"#00FF87",badge:"#00FF87",text:"#000"},
+  MEDIA:{bg:"rgba(255,214,10,0.08)",border:"#FFD60A",badge:"#FFD60A",text:"#000"},
+  VIGILAR:{bg:"rgba(255,107,53,0.08)",border:"#FF6B35",badge:"#FF6B35",text:"#fff"},
+};
+function Bar({v,color}){return(
+  <div style={{display:"flex",gap:4,alignItems:"center"}}>
+    <div style={{flex:1,height:6,background:"#1a1a1a",borderRadius:3,overflow:"hidden"}}>
+      <div style={{width:v+"%",height:"100%",background:color,borderRadius:3}}/>
+    </div>
+    <span style={{fontSize:10,color,fontFamily:"monospace",minWidth:28}}>{v}%</span>
+  </div>
+);}
+function Card({op}){
+  const[ex,setEx]=useState(false);
+  const c=cfg[op.nivel];
+  return(
+    <div onClick={()=>setEx(!ex)} style={{background:c.bg,border:"1px solid "+c.border+"22",borderLeft:"3px solid "+c.border,borderRadius:12,padding:"20px 24px",cursor:"pointer"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{background:c.badge,color:c.text,fontSize:9,fontWeight:800,padding:"3px 8px",borderRadius:4,fontFamily:"monospace",letterSpacing:1}}>{op.nivel}</span>
+          <span style={{fontSize:9,color:"#666",fontFamily:"monospace"}}>{op.codigo}</span>
+        </div>
+        <div style={{textAlign:"right"}}>
+          <div style={{fontSize:22,fontWeight:900,color:c.border,fontFamily:"monospace",lineHeight:1}}>{op.tendencia}</div>
+          <div style={{fontSize:9,color:"#666",fontFamily:"monospace"}}>{op.dias} días</div>
+        </div>
+      </div>
+      <div style={{fontSize:16,fontWeight:700,color:"#fff",marginBottom:4,fontFamily:"Georgia,serif"}}>{op.sector}</div>
+      <div style={{fontSize:11,color:"#888",marginBottom:16,fontFamily:"monospace"}}>📍 {op.region}</div>
+      <div style={{display:"flex",flexDirection:"column",gap:6}}>
+        <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:"#888",fontFamily:"monospace"}}><span>DEMANDA</span><span>OFERTA</span></div>
+        <Bar v={op.demanda} color={c.border}/>
+        <Bar v={op.oferta} color="#444"/>
+      </div>
+      {ex&&(
+        <div style={{marginTop:18,paddingTop:18,borderTop:"1px solid #222"}}>
+          <p style={{fontSize:12,color:"#bbb",lineHeight:1.7,marginBottom:16,fontFamily:"Georgia,serif"}}>{op.driver}</p>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:16}}>
+            <div style={{background:"#111",borderRadius:8,padding:12}}>
+              <div style={{fontSize:9,color:"#666",fontFamily:"monospace",marginBottom:4}}>VENTANA</div>
+              <div style={{fontSize:12,color:"#fff",fontWeight:600}}>{op.ventana}</div>
+            </div>
+            <div style={{background:"#111",borderRadius:8,padding:12}}>
+              <div style={{fontSize:9,color:"#666",fontFamily:"monospace",marginBottom:4}}>INVERSIÓN</div>
+              <div style={{fontSize:12,color:"#fff",fontWeight:600}}>{op.inversion}</div>
+            </div>
+          </div>
+          <div style={{fontSize:9,color:"#666",fontFamily:"monospace",marginBottom:8}}>SEÑALES DETECTADAS</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+            {op.señales.map((s,i)=>(
+              <span key={i} style={{fontSize:10,color:c.border,background:c.border+"11",border:"1px solid "+c.border+"33",borderRadius:4,padding:"3px 8px",fontFamily:"monospace"}}>{s}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      <div style={{marginTop:12,fontSize:10,color:"#555",fontFamily:"monospace",textAlign:"right"}}>{ex?"▲ colapsar":"▼ ver detalle"}</div>
+    </div>
+  );
+}
+function App(){
+  const[f,setF]=useState("TODAS");
+  const niveles=["TODAS","ALTA","MEDIA","VIGILAR"];
+  const lista=f==="TODAS"?data.oportunidades:data.oportunidades.filter(o=>o.nivel===f);
+  return(
+    <div style={{minHeight:"100vh",background:"#080808",color:"#fff",fontFamily:"system-ui,sans-serif",paddingBottom:60}}>
+      <div style={{borderBottom:"1px solid #1a1a1a",padding:"28px 28px 24px",background:"linear-gradient(180deg,#0d0d0d,#080808)"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
+          <div>
+            <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:4}}>
+              <div style={{width:8,height:8,borderRadius:"50%",background:"#00FF87",boxShadow:"0 0 8px #00FF87",animation:"pulse 2s infinite"}}/>
+              <span style={{fontSize:10,color:"#00FF87",fontFamily:"monospace",letterSpacing:2}}>SISTEMA ACTIVO</span>
+            </div>
+            <h1 style={{fontSize:28,fontWeight:900,margin:0,letterSpacing:-1,fontFamily:"Georgia,serif"}}>RADAR<span style={{color:"#00FF87"}}>MX</span></h1>
+            <div style={{fontSize:11,color:"#555",fontFamily:"monospace",marginTop:2}}>Inteligencia de Mercado · México</div>
+          </div>
+          <div style={{textAlign:"right"}}>
+            <div style={{fontSize:11,color:"#555",fontFamily:"monospace"}}>{data.semana}</div>
+            <div style={{fontSize:13,color:"#888",fontFamily:"monospace",marginTop:2}}>{data.fecha}</div>
+          </div>
+        </div>
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:1,background:"#111",margin:"20px 28px",borderRadius:10,overflow:"hidden",border:"1px solid #1a1a1a"}}>
+        {[{label:"OPORTUNIDADES",val:"4",sub:"detectadas"},{label:"SECTORES",val:"20",sub:"monitoreados"},{label:"FUENTES",val:"6",sub:"activas"}].map((s,i)=>(
+          <div key={i} style={{padding:"16px 14px",background:"#0d0d0d",textAlign:"center"}}>
+            <div style={{fontSize:24,fontWeight:900,color:"#fff",fontFamily:"monospace"}}>{s.val}</div>
+            <div style={{fontSize:8,color:"#555",fontFamily:"monospace",letterSpacing:1}}>{s.label}</div>
+            <div style={{fontSize:9,color:"#444",fontFamily:"monospace"}}>{s.sub}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{display:"flex",gap:8,padding:"0 28px",marginBottom:20,flexWrap:"wrap"}}>
+        {niveles.map(n=>(
+          <button key={n} onClick={e=>{e.stopPropagation();setF(n);}} style={{fontSize:10,fontFamily:"monospace",letterSpacing:1,padding:"6px 14px",borderRadius:6,border:f===n?"1px solid #00FF87":"1px solid #222",background:f===n?"#00FF8711":"transparent",color:f===n?"#00FF87":"#555",cursor:"pointer"}}>{n}</button>
+        ))}
+      </div>
+      <div style={{display:"flex",flexDirection:"column",gap:12,padding:"0 28px"}}>
+        {lista.map(op=><Card key={op.id} op={op}/>)}
+      </div>
+      <div style={{padding:"32px 28px 0",borderTop:"1px solid #111",marginTop:32}}>
+        <div style={{fontSize:10,color:"#333",fontFamily:"monospace",lineHeight:1.8}}>
+          FUENTES: INEGI · DENUE · Google Trends · Mercado Libre · SAT<br/>
+          ANÁLISIS: Claude API · Estadística inferencial · SCIAN 2023<br/>
+          <span style={{color:"#222"}}>Reporte automático. No constituye asesoría financiera.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
