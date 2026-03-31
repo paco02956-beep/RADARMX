@@ -43,6 +43,20 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#080808}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .fab-wrap{position:fixed;bottom:28px;right:22px;display:flex;flex-direction:column;gap:12px;z-index:999}
+    .fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 18px rgba(0,0,0,.5);transition:transform .15s}
+    .fab:active{transform:scale(.92)}
+    .fab-print{background:#00FF87;color:#000}
+    .fab-share{background:#1a1a1a;color:#00FF87;border:1px solid #00FF8744}
+    @media print{
+      .fab-wrap{display:none!important}
+      body{background:#fff!important}
+      #root>div{background:#fff!important;color:#000!important}
+      h1,h1 span{color:#000!important}
+      div[style*="background:#080808"],div[style*="background:#0d0d0d"],div[style*="background:#111"],div[style*="background:#1a1a1a"]{background:#f5f5f5!important}
+      span[style*="color:#fff"],div[style*="color:#fff"],p[style*="color:#bbb"],div[style*="color:#888"],div[style*="color:#555"],div[style*="color:#666"],div[style*="color:#444"],div[style*="color:#333"]{color:#222!important}
+      div[style*="background:linear-gradient"]{background:#f0f0f0!important;border-bottom:1px solid #ccc!important}
+    }
   </style>
 </head>
 <body>
@@ -164,6 +178,13 @@ function App(){
           ANÁLISIS: Claude API · Estadística inferencial · SCIAN 2023<br/>
           <span style={{color:"#222"}}>Reporte automático. No constituye asesoría financiera.</span>
         </div>
+      </div>
+      <div className="fab-wrap">
+        <button className="fab fab-share" title="Compartir" onClick={()=>{
+          if(navigator.share){navigator.share({title:"H-barra · Inteligencia de Mercado",text:"Reporte semanal de oportunidades de mercado en México",url:window.location.href}).catch(()=>{});}
+          else{navigator.clipboard&&navigator.clipboard.writeText(window.location.href).then(()=>alert("Enlace copiado al portapapeles"));}
+        }}>⬆</button>
+        <button className="fab fab-print" title="Imprimir / AirPrint" onClick={()=>window.print()}>🖨</button>
       </div>
     </div>
   );
